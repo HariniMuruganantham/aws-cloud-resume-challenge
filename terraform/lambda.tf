@@ -5,6 +5,7 @@ resource "aws_lambda_function" "counter" {
   runtime       = "python3.9"
   role          = aws_iam_role.lambda_role.arn
 }
+
 resource "aws_lambda_permission" "api_gw" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"

@@ -7,17 +7,13 @@ table = dynamodb.Table("visitor_counter")
 def lambda_handler(event, context):
     response = table.update_item(
         Key={"id": "visits"},
-        UpdateExpression="ADD visit_count :inc",
-        ExpressionAttributeValues={":inc": 1},
+        UpdateExpression="SET visit_count = if_not_exists(visit_count, :start) + :inc",
+        ExpressionAttributeValues={":inc": 1, ":start": 0},
         ReturnValues="UPDATED_NEW"
     )
 
     return {
         "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Origin": "*"
-        },
-        "body": json.dumps({
-            "count": int(response["Attributes"]["visit_count"])
-        })
+        "headers": {"Access-Control-Allow-Origin": "*"},
+        "body": json.dumps({"count": int(response["Attributes"]["visit_count"])})
     }
