@@ -1,0 +1,84 @@
+############################################
+# Node / Vite / React
+############################################
+node_modules/
+dist/
+.cache/
+.vite/
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+############################################
+# Environment / Secrets
+############################################
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+
+############################################
+# Terraform
+############################################
+terraform/.terraform/
+terraform/.terraform.lock.hcl.bak
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/crash.log
+terraform/*.tfvars
+terraform/*.tfvars.json
+
+############################################
+# Python / Lambda build artifacts
+############################################
+backend/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+backend/lambda.zip
+
+############################################
+# OS / Editor / IDE
+############################################
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+############################################
+# Logs / temp
+############################################
+*.log
+tmp/
+temp/
+*.tmp
+
+############################################
+# Vercel
+############################################
+.vercel/
+
+############################################
+# CI runtime generated files
+############################################
+api_url.txt
+cloudfront_id.txt
+
+############################################
+# UNUSED / NOT MOUNTED FILES
+############################################
+src/pages/Blog.tsx
+src/pages/CaseStudies.tsx
+src/components/EnhancedBlog.tsx
+src/components/EnhancedCaseStudies.tsx
+src/components/VisualComponents.tsx
+src/lib/utils.ts
+src/hooks/use-mobile.tsx
+public/use.txt
