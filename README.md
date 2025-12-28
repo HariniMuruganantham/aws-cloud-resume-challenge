@@ -83,6 +83,14 @@ The deployment workflow automatically runs on every push to the `main` branch an
 terraform init
 terraform apply
 ````
+## 👩‍💻 Author
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Harini_Muruganantham-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/harini-muruganantham)
+[![GitHub](https://img.shields.io/badge/GitHub-HariniMuruganantham-black?style=flat-square&logo=github)](https://github.com/HariniMuruganantham)
+[![Substack](https://img.shields.io/badge/Substack-Cloud_Engineering-orange?style=flat-square&logo=substack)](https://substack.com/@harinimuruganantham)
+
+**Harini Muruganantham**  
+DevOps Engineer | AWS | 
 
 
 
