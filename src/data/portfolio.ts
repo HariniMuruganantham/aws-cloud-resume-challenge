@@ -145,7 +145,7 @@ export const PROJECTS = [
       "Hosted a personal portfolio on AWS showcasing DevOps projects and technical skills.",
     technologies: ["AWS", "GitHub"],
     category: "devops",
-    githubLink: "",
+    githubLink: "https://github.com/HariniMuruganantham/aws-cloud-resume-challenge.git",
     websiteLink: "",
   },
 ];

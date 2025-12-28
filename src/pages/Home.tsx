@@ -62,11 +62,12 @@ export const Home = () => {
 
               {/* Resume hosted on AWS S3 + CloudFront */}
               <a
-                href="/resume.pdf"
+                href="/Harini_Muruganantham_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 border-2 border-neutral-600 bg-neutral-800 text-neutral-200 hover:border-primary-500 hover:text-primary-500 transition font-semibold rounded-lg"
               >
+
                 <FileText className="mr-2 h-5 w-5" />
                 View Resume
               </a>
