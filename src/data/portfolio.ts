@@ -115,6 +115,39 @@ export const PROJECTS = [
     githubLink: "https://github.com/HariniMuruganantham/AI-Tutor",
     websiteLink: "",
   },
+
+  {
+    title: "AWS Blue–Green Deployment (Zero Downtime)",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "Designed and implemented a production-style Blue–Green Deployment architecture on AWS to achieve zero-downtime application releases using ALB, Auto Scaling Groups, private subnets, NAT Gateway, and health checks.",
+    technologies: [
+      "AWS",
+      "EC2",
+      "Application Load Balancer",
+      "Auto Scaling",
+      "VPC",
+      "Blue–Green Deployment",
+    ],
+    category: "cloud",
+    githubLink: "https://github.com/HariniMuruganantham/AWS-Blue-Green-Deployment",
+    websiteLink: "",
+  },
+
+  {
+    title: "Cloud Portfolio Hosting",
+    image:
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "Hosted a personal portfolio on AWS to showcase DevOps and cloud projects, following cloud best practices.",
+    technologies: ["AWS", "GitHub"],
+    category: "cloud",
+    githubLink:
+      "https://github.com/HariniMuruganantham/aws-cloud-resume-challenge.git",
+    websiteLink: "",
+  },
+
   {
     title: "E-Commerce Cloud Hosting",
     image:
@@ -122,10 +155,29 @@ export const PROJECTS = [
     description:
       "Deployed and hosted an e-commerce application on AWS with a focus on scalability, reliability, and cloud best practices.",
     technologies: ["AWS", "Terraform", "React"],
-    category: "devops", 
+    category: "cloud",
     githubLink: "",
     websiteLink: "",
   },
+
+  {
+    title: "GitHub Integration Automation Script",
+    image:
+      "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "Built an automation script to integrate GitHub with external systems using GitHub APIs, enabling repeatable DevOps workflows and repository automation.",
+    technologies: [
+      "GitHub API",
+      "Automation",
+      "Shell Scripting",
+      "DevOps",
+    ],
+    category: "devops",
+    githubLink:
+      "https://github.com/HariniMuruganantham/github-integration-script",
+    websiteLink: "",
+  },
+
   {
     title: "Travel Chatbot",
     image:
@@ -134,18 +186,8 @@ export const PROJECTS = [
       "An intelligent chatbot for travel-related queries using LLMs, LangChain, and agent-based workflows.",
     technologies: ["Python", "LangChain", "CrewAI", "Groq"],
     category: "ai",
-    githubLink: "https://github.com/HariniMuruganantham/travel-chatbot.git",
-    websiteLink: "",
-  },
-  {
-    title: "Cloud Portfolio Hosting",
-    image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
-    description:
-      "Hosted a personal portfolio on AWS showcasing DevOps projects and technical skills.",
-    technologies: ["AWS", "GitHub"],
-    category: "devops",
-    githubLink: "https://github.com/HariniMuruganantham/aws-cloud-resume-challenge.git",
+    githubLink:
+      "https://github.com/HariniMuruganantham/travel-chatbot.git",
     websiteLink: "",
   },
 ];
@@ -171,7 +213,7 @@ export const SKILLS_BY_CATEGORY = {
 
 export const PROJECTS_BY_CATEGORY = {
   all: PROJECTS,
+  cloud: PROJECTS.filter(project => project.category === "cloud"),
   devops: PROJECTS.filter(project => project.category === "devops"),
   ai: PROJECTS.filter(project => project.category === "ai"),
-  devopsAI: PROJECTS.filter(project => project.category === "devops-ai"),
 };

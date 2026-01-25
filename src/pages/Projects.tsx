@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TerminalHeader } from '../components/TerminalHeader';
-import { ExternalLink, Github, Filter, Cpu, Cloud } from 'lucide-react';
+import { ExternalLink, Github, Filter, Cpu, Cloud, Settings } from 'lucide-react';
 import { PROJECTS_BY_CATEGORY } from '../data/portfolio';
 
+type FilterType = 'all' | 'cloud' | 'devops' | 'ai';
+
 export const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'devops' | 'ai'>('all');
+  const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
   /* =========================
      FILTER CONFIG
@@ -17,11 +19,14 @@ export const Projects = () => {
       count: PROJECTS_BY_CATEGORY.all.length,
     },
     {
+      id: 'cloud',
+      label: 'Cloud',
+      count: PROJECTS_BY_CATEGORY.cloud.length,
+    },
+    {
       id: 'devops',
-      label: 'DevOps & Cloud',
-      count:
-        PROJECTS_BY_CATEGORY.devops.length +
-        PROJECTS_BY_CATEGORY.devopsAI.length,
+      label: 'DevOps',
+      count: PROJECTS_BY_CATEGORY.devops.length,
     },
     {
       id: 'ai',
@@ -30,19 +35,25 @@ export const Projects = () => {
     },
   ];
 
+  /* =========================
+     PROJECT SELECTOR
+  ========================== */
   const getProjects = () => {
-    if (activeFilter === 'devops') {
-      return [
-        ...PROJECTS_BY_CATEGORY.devops,
-        ...PROJECTS_BY_CATEGORY.devopsAI,
-      ];
+    switch (activeFilter) {
+      case 'cloud':
+        return PROJECTS_BY_CATEGORY.cloud;
+      case 'devops':
+        return PROJECTS_BY_CATEGORY.devops;
+      case 'ai':
+        return PROJECTS_BY_CATEGORY.ai;
+      default:
+        return PROJECTS_BY_CATEGORY.all;
     }
-    if (activeFilter === 'ai') {
-      return PROJECTS_BY_CATEGORY.ai;
-    }
-    return PROJECTS_BY_CATEGORY.all;
   };
 
+  /* =========================
+     BADGE CONFIG
+  ========================== */
   const getBadge = (category: string) => {
     if (category === 'ai') {
       return {
@@ -52,9 +63,19 @@ export const Projects = () => {
           'bg-purple-500/20 text-purple-500 border border-purple-500/30',
       };
     }
+
+    if (category === 'cloud') {
+      return {
+        label: 'Cloud',
+        icon: <Cloud size={14} />,
+        className:
+          'bg-blue-500/20 text-blue-500 border border-blue-500/30',
+      };
+    }
+
     return {
-      label: 'DevOps & Cloud',
-      icon: <Cloud size={14} />,
+      label: 'DevOps',
+      icon: <Settings size={14} />,
       className:
         'bg-primary-500/20 text-primary-500 border border-primary-500/30',
     };
@@ -65,7 +86,7 @@ export const Projects = () => {
       {/* Terminal Header */}
       <TerminalHeader
         command="kubectl get projects"
-        description="Real-world DevOps, Cloud, and AI implementations"
+        description="Real-world Cloud, DevOps, and AI implementations"
       />
 
       {/* Filters */}
@@ -75,7 +96,7 @@ export const Projects = () => {
             {filters.map(filter => (
               <button
                 key={filter.id}
-                onClick={() => setActiveFilter(filter.id as any)}
+                onClick={() => setActiveFilter(filter.id as FilterType)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-mono transition ${
                   activeFilter === filter.id
                     ? 'bg-primary-500 text-bg-surface shadow-glow'
@@ -203,10 +224,15 @@ export const Projects = () => {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>DevOps & Cloud</span>
+                <span>Cloud</span>
                 <span className="text-primary-500">
-                  {PROJECTS_BY_CATEGORY.devops.length +
-                    PROJECTS_BY_CATEGORY.devopsAI.length}
+                  {PROJECTS_BY_CATEGORY.cloud.length}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>DevOps</span>
+                <span className="text-primary-500">
+                  {PROJECTS_BY_CATEGORY.devops.length}
                 </span>
               </div>
               <div className="flex justify-between">
