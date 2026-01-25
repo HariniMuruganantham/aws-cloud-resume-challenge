@@ -82,5 +82,5 @@ src/components/VisualComponents.tsx
 src/lib/utils.ts
 src/hooks/use-mobile.tsx
 public/use.txt
-.vercel
 .env*.local
+.vercel
