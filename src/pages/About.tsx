@@ -6,7 +6,14 @@ import { Calendar, MapPin, Code, Zap } from 'lucide-react';
 export const About = () => {
   const timeline = [
     {
-      year: 'oct 2025 - Present',
+      year: 'Jan 2026 - Present',
+      title: 'DevOps Engineer',
+      company: 'Inthera Consulting Groups',
+      description:
+        'Working on cloud automation, CI/CD pipelines, Monitoring and container orchestration using AWS, Docker, Grafana and Linux/Shell scripting.',
+      icon: Code,},
+    {
+      year: 'oct 2025 - Dec 2025',
       title: 'DevOps intern',
       company: 'Inthera Consulting Groups',
       description:

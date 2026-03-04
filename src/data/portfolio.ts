@@ -21,9 +21,9 @@ export const SKILLS = [
     level: 85,
   },
   {
-    name: "Shell Scripting",
+    name: "Bash",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
-    category: "devops",
+    category: "development",
     level: 80,
   },
 
