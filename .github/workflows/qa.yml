@@ -9,8 +9,8 @@ jobs:
   qa:
     uses: HariniMuruganantham/Automatic-QA-CiCd/.github/workflows/master-qa.yml@main
     with:
-      project-name: "aws-cloud-resume"
-      base-url: "http://localhost:5173"
+      project-name: "harini-devops-portfolio"
+      base-url: "https://harini-devops-portfolio.vercel.app"
       openai-model: "gpt-4o-mini"
       run-load: true
       run-stress: false
