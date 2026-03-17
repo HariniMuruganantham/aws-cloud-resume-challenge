@@ -1,19 +1,11 @@
 name: QA
-
-on:
-  push:
-    branches: ["**"]
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   qa:
-    uses: HariniMuruganantham/Automatic-QA-CiCd/.github/workflows/master-qa.yml@main
+    uses: your-org/automated-qa-pipeline/.github/workflows/detect-stack.yml@main
     with:
-      project-name: "harini-devops-portfolio"
-      base-url: "https://harini-devops-portfolio.vercel.app"
-      openai-model: "gpt-4o-mini"
-      run-load: true
-      run-stress: false
-      load-vus: 20
+      target_repo: ${{ github.repository }}
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GITHUB_TOKEN:   ${{ secrets.GITHUB_TOKEN }}
