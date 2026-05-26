@@ -121,7 +121,7 @@ export const About = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-neutral-400">Projects</span>
-                    <span className="text-primary-500 font-mono">4</span>
+                    <span className="text-primary-500 font-mono">6</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-neutral-400">Technologies</span>

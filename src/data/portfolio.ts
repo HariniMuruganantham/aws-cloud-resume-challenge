@@ -35,9 +35,15 @@ export const SKILLS = [
     level: 80,
   },
   {
+    name: "Docker Swarm",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    category: "containers",
+    level: 70,
+  },
+  {
     name: "GitHub Actions",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-    category: "devops",
+    category: "containers",
     level: 80,
   },
   {
