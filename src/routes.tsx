@@ -1,4 +1,3 @@
-import type { RouteRecord } from 'vite-react-ssg'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
@@ -7,57 +6,33 @@ import { Skills } from './pages/Skills'
 import { Projects } from './pages/Projects'
 import { Contact } from './pages/Contact'
 
-export const routes: RouteRecord[] = [
+const Layout = ({ children }: { children: React.ReactNode }) => (
+  <div className="min-h-screen bg-bg-page text-neutral-200 font-sans">
+    <Navbar />
+    <main className="pt-16">{children}</main>
+    <Footer />
+  </div>
+)
+
+export const routes = [
   {
     path: '/',
-    element: (
-      <div className="min-h-screen bg-bg-page text-neutral-200 font-sans">
-        <Navbar />
-        <main className="pt-16">
-          <Home />
-        </main>
-        <Footer />
-      </div>
-    ),
+    element: <Layout><Home /></Layout>,
   },
   {
     path: '/about',
-    element: (
-      <div className="min-h-screen bg-bg-page text-neutral-200 font-sans">
-        <Navbar />
-        <main className="pt-16"><About /></main>
-        <Footer />
-      </div>
-    ),
+    element: <Layout><About /></Layout>,
   },
   {
     path: '/skills',
-    element: (
-      <div className="min-h-screen bg-bg-page text-neutral-200 font-sans">
-        <Navbar />
-        <main className="pt-16"><Skills /></main>
-        <Footer />
-      </div>
-    ),
+    element: <Layout><Skills /></Layout>,
   },
   {
     path: '/projects',
-    element: (
-      <div className="min-h-screen bg-bg-page text-neutral-200 font-sans">
-        <Navbar />
-        <main className="pt-16"><Projects /></main>
-        <Footer />
-      </div>
-    ),
+    element: <Layout><Projects /></Layout>,
   },
   {
     path: '/contact',
-    element: (
-      <div className="min-h-screen bg-bg-page text-neutral-200 font-sans">
-        <Navbar />
-        <main className="pt-16"><Contact /></main>
-        <Footer />
-      </div>
-    ),
+    element: <Layout><Contact /></Layout>,
   },
 ]
