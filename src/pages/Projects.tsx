@@ -9,83 +9,40 @@ type FilterType = 'all' | 'aiops' | 'cloud' | 'devops' | 'ai';
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
-  /* =========================
-     FILTER CONFIG
-  ========================== */
   const filters = [
-    {
-      id: 'all',
-      label: 'All Projects',
-      count: PROJECTS_BY_CATEGORY.all.length,
-    },
-    {
-      id: 'aiops',
-      label: 'AIOps',
-      count: PROJECTS_BY_CATEGORY.aiops.length,
-    },
-    {
-      id: 'cloud',
-      label: 'Cloud',
-      count: PROJECTS_BY_CATEGORY.cloud.length,
-    },
-    {
-      id: 'devops',
-      label: 'DevOps',
-      count: PROJECTS_BY_CATEGORY.devops.length,
-    },
-    {
-      id: 'ai',
-      label: 'AI / GenAI',
-      count: PROJECTS_BY_CATEGORY.ai.length,
-    },
+    { id: 'all',    label: 'All Projects', count: PROJECTS_BY_CATEGORY.all.length },
+    { id: 'aiops',  label: 'AIOps',        count: PROJECTS_BY_CATEGORY.aiops.length },
+    { id: 'cloud',  label: 'Cloud',        count: PROJECTS_BY_CATEGORY.cloud.length },
+    { id: 'devops', label: 'DevOps',       count: PROJECTS_BY_CATEGORY.devops.length },
+    { id: 'ai',     label: 'AI / GenAI',   count: PROJECTS_BY_CATEGORY.ai.length },
   ];
 
-  /* =========================
-     PROJECT SELECTOR
-  ========================== */
   const getProjects = () => {
     switch (activeFilter) {
-      case 'aiops':
-        return PROJECTS_BY_CATEGORY.aiops;
-      case 'cloud':
-        return PROJECTS_BY_CATEGORY.cloud;
-      case 'devops':
-        return PROJECTS_BY_CATEGORY.devops;
-      case 'ai':
-        return PROJECTS_BY_CATEGORY.ai;
-      default:
-        return PROJECTS_BY_CATEGORY.all;
+      case 'aiops':  return PROJECTS_BY_CATEGORY.aiops;
+      case 'cloud':  return PROJECTS_BY_CATEGORY.cloud;
+      case 'devops': return PROJECTS_BY_CATEGORY.devops;
+      case 'ai':     return PROJECTS_BY_CATEGORY.ai;
+      default:       return PROJECTS_BY_CATEGORY.all;
     }
   };
 
-  /* =========================
-     BADGE CONFIG
-  ========================== */
   const getBadge = (category: string) => {
-    if (category === 'aiops') {
-      return {
-        label: 'AIOps',
-        icon: <Activity size={14} />,
-        className: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30',
-      };
-    }
-
-    if (category === 'ai') {
-      return {
-        label: 'AI / GenAI',
-        icon: <Cpu size={14} />,
-        className: 'bg-purple-500/20 text-purple-500 border border-purple-500/30',
-      };
-    }
-
-    if (category === 'cloud') {
-      return {
-        label: 'Cloud',
-        icon: <Cloud size={14} />,
-        className: 'bg-blue-500/20 text-blue-500 border border-blue-500/30',
-      };
-    }
-
+    if (category === 'aiops') return {
+      label: 'AIOps',
+      icon: <Activity size={14} />,
+      className: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30',
+    };
+    if (category === 'ai') return {
+      label: 'AI / GenAI',
+      icon: <Cpu size={14} />,
+      className: 'bg-purple-500/20 text-purple-500 border border-purple-500/30',
+    };
+    if (category === 'cloud') return {
+      label: 'Cloud',
+      icon: <Cloud size={14} />,
+      className: 'bg-blue-500/20 text-blue-500 border border-blue-500/30',
+    };
     return {
       label: 'DevOps',
       icon: <Settings size={14} />,
@@ -95,13 +52,11 @@ export const Projects = () => {
 
   return (
     <div className="min-h-screen bg-bg-page">
-      {/* Terminal Header */}
       <TerminalHeader
         command="kubectl get projects"
         description="Real-world AIOps, Cloud, DevOps, and AI implementations"
       />
 
-      {/* Filters */}
       <section className="py-12 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-4">
@@ -126,13 +81,11 @@ export const Projects = () => {
         </div>
       </section>
 
-      {/* Projects Grid */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {getProjects().map((project, index) => {
               const badge = getBadge(project.category);
-
               return (
                 <motion.div
                   key={project.title}
@@ -141,38 +94,25 @@ export const Projects = () => {
                   transition={{ delay: index * 0.1 }}
                   className="bg-bg-surface border border-neutral-700 rounded-xl overflow-hidden hover:border-primary-500/50 transition"
                 >
-                  {/* Image */}
                   <div className="relative aspect-video">
                     <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover"
                     />
-                    <div
-                      className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-mono flex items-center gap-1 ${badge.className}`}
-                    >
+                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-mono flex items-center gap-1 ${badge.className}`}>
                       {badge.icon}
                       {badge.label}
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-6 space-y-4">
-                    <h3 className="font-mono text-xl text-primary-500">
-                      {project.title}
-                    </h3>
+                    <h3 className="font-mono text-xl text-primary-500">{project.title}</h3>
+                    <p className="text-neutral-300 text-sm leading-relaxed line-clamp-3">{project.description}</p>
 
-                    <p className="text-neutral-300 text-sm leading-relaxed line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.slice(0, 5).map(tech => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 bg-neutral-800 border border-neutral-700 text-xs rounded"
-                        >
+                        <span key={tech} className="px-2 py-1 bg-neutral-800 border border-neutral-700 text-xs rounded">
                           {tech}
                         </span>
                       ))}
@@ -183,7 +123,6 @@ export const Projects = () => {
                       )}
                     </div>
 
-                    {/* Actions */}
                     <div className="flex gap-4 pt-2">
                       {project.githubLink && (
                         
@@ -215,49 +154,35 @@ export const Projects = () => {
           </div>
 
           {getProjects().length === 0 && (
-            <div className="text-center py-24 text-neutral-400 font-mono">
-              No projects found.
-            </div>
+            <div className="text-center py-24 text-neutral-400 font-mono">No projects found.</div>
           )}
         </div>
       </section>
 
-      {/* Terminal Summary */}
       <section className="py-24 bg-bg-elevated">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-bg-surface border border-neutral-700 rounded-xl p-8 font-mono">
             <div className="text-accent-500 mb-4">$ cat project_summary.txt</div>
-
             <div className="space-y-2 text-neutral-200">
               <div className="flex justify-between">
                 <span>Total Projects</span>
-                <span className="text-primary-500">
-                  {PROJECTS_BY_CATEGORY.all.length}
-                </span>
+                <span className="text-primary-500">{PROJECTS_BY_CATEGORY.all.length}</span>
               </div>
               <div className="flex justify-between">
                 <span>AIOps</span>
-                <span className="text-emerald-400">
-                  {PROJECTS_BY_CATEGORY.aiops.length}
-                </span>
+                <span className="text-emerald-400">{PROJECTS_BY_CATEGORY.aiops.length}</span>
               </div>
               <div className="flex justify-between">
                 <span>Cloud</span>
-                <span className="text-primary-500">
-                  {PROJECTS_BY_CATEGORY.cloud.length}
-                </span>
+                <span className="text-primary-500">{PROJECTS_BY_CATEGORY.cloud.length}</span>
               </div>
               <div className="flex justify-between">
                 <span>DevOps</span>
-                <span className="text-primary-500">
-                  {PROJECTS_BY_CATEGORY.devops.length}
-                </span>
+                <span className="text-primary-500">{PROJECTS_BY_CATEGORY.devops.length}</span>
               </div>
               <div className="flex justify-between">
                 <span>AI / GenAI</span>
-                <span className="text-primary-500">
-                  {PROJECTS_BY_CATEGORY.ai.length}
-                </span>
+                <span className="text-primary-500">{PROJECTS_BY_CATEGORY.ai.length}</span>
               </div>
             </div>
           </div>
