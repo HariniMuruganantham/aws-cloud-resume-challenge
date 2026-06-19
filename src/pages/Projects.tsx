@@ -4,7 +4,7 @@ import { TerminalHeader } from '../components/TerminalHeader';
 import { ExternalLink, Github, Filter, Cpu, Cloud, Settings } from 'lucide-react';
 import { PROJECTS_BY_CATEGORY } from '../data/portfolio';
 
-type FilterType = 'all' | 'cloud' | 'devops' | 'ai';
+type FilterType = 'all' | 'cloud' | 'devops' | 'ai' | 'AiOps';
 
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
