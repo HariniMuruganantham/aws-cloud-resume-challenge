@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TerminalHeader } from '../components/TerminalHeader';
-import { ExternalLink, Github, Filter, Cpu, Cloud, Settings } from 'lucide-react';
+import { ExternalLink, Github, Filter, Cpu, Cloud, Settings, Activity } from 'lucide-react';
 import { PROJECTS_BY_CATEGORY } from '../data/portfolio';
 
-type FilterType = 'all' | 'cloud' | 'devops' | 'ai' | 'AiOps';
+type FilterType = 'all' | 'aiops' | 'cloud' | 'devops' | 'ai';
 
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -17,6 +17,11 @@ export const Projects = () => {
       id: 'all',
       label: 'All Projects',
       count: PROJECTS_BY_CATEGORY.all.length,
+    },
+    {
+      id: 'aiops',
+      label: 'AIOps',
+      count: PROJECTS_BY_CATEGORY.aiops.length,
     },
     {
       id: 'cloud',
@@ -40,6 +45,8 @@ export const Projects = () => {
   ========================== */
   const getProjects = () => {
     switch (activeFilter) {
+      case 'aiops':
+        return PROJECTS_BY_CATEGORY.aiops;
       case 'cloud':
         return PROJECTS_BY_CATEGORY.cloud;
       case 'devops':
@@ -55,12 +62,19 @@ export const Projects = () => {
      BADGE CONFIG
   ========================== */
   const getBadge = (category: string) => {
+    if (category === 'aiops') {
+      return {
+        label: 'AIOps',
+        icon: <Activity size={14} />,
+        className: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30',
+      };
+    }
+
     if (category === 'ai') {
       return {
         label: 'AI / GenAI',
         icon: <Cpu size={14} />,
-        className:
-          'bg-purple-500/20 text-purple-500 border border-purple-500/30',
+        className: 'bg-purple-500/20 text-purple-500 border border-purple-500/30',
       };
     }
 
@@ -68,16 +82,14 @@ export const Projects = () => {
       return {
         label: 'Cloud',
         icon: <Cloud size={14} />,
-        className:
-          'bg-blue-500/20 text-blue-500 border border-blue-500/30',
+        className: 'bg-blue-500/20 text-blue-500 border border-blue-500/30',
       };
     }
 
     return {
       label: 'DevOps',
       icon: <Settings size={14} />,
-      className:
-        'bg-primary-500/20 text-primary-500 border border-primary-500/30',
+      className: 'bg-primary-500/20 text-primary-500 border border-primary-500/30',
     };
   };
 
@@ -86,7 +98,7 @@ export const Projects = () => {
       {/* Terminal Header */}
       <TerminalHeader
         command="kubectl get projects"
-        description="Real-world Cloud, DevOps, and AI implementations"
+        description="Real-world AIOps, Cloud, DevOps, and AI implementations"
       />
 
       {/* Filters */}
@@ -174,7 +186,7 @@ export const Projects = () => {
                     {/* Actions */}
                     <div className="flex gap-4 pt-2">
                       {project.githubLink && (
-                        <a
+                        
                           href={project.githubLink}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -185,7 +197,7 @@ export const Projects = () => {
                         </a>
                       )}
                       {project.websiteLink && (
-                        <a
+                        
                           href={project.websiteLink}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -221,6 +233,12 @@ export const Projects = () => {
                 <span>Total Projects</span>
                 <span className="text-primary-500">
                   {PROJECTS_BY_CATEGORY.all.length}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>AIOps</span>
+                <span className="text-emerald-400">
+                  {PROJECTS_BY_CATEGORY.aiops.length}
                 </span>
               </div>
               <div className="flex justify-between">
