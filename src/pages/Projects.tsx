@@ -125,23 +125,13 @@ export const Projects = () => {
 
                     <div className="flex gap-4 pt-2">
                       {project.githubLink && (
-                        
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-neutral-400 hover:text-primary-500 font-mono text-sm"
-                        >
+                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-neutral-400 hover:text-primary-500 font-mono text-sm">
                           <Github size={16} />
                           Code
                         </a>
                       )}
                       {project.websiteLink && (
-                        
-                          href={project.websiteLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-neutral-400 hover:text-primary-500 font-mono text-sm"
-                        >
+                        <a href={project.websiteLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-neutral-400 hover:text-primary-500 font-mono text-sm">
                           <ExternalLink size={16} />
                           Live
                         </a>
