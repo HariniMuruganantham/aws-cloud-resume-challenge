@@ -1,13 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { ErrorBoundary } from './components/ErrorBoundary'
+import { ViteReactSSG } from 'vite-react-ssg'
+import { routes } from './routes'
 import './index.css'
-import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </StrictMode>,
-)
+export const createRoot = ViteReactSSG({ routes })
